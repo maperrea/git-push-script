@@ -1,5 +1,8 @@
 #!/bin/zsh
 git add -A
+if [[ $? -ne 0 ]]; then
+	exit
+fi
 git diff --cached --exit-code >/dev/null
 if [[ $? -eq 0 ]]; then
 	echo -n "No changes to be commited. Do you still wish to continue? [y/n]: "
