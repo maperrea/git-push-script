@@ -6,4 +6,4 @@ If the -fast parameter is supplied it automaticaly pushes with a default message
 
 In both cases you can specify a remote repository and a branch to the script as two last arguments.
 
-If the push fails it asks for a correct repository annd branch.
+If the push fails it asks for a correct repository and branch.
