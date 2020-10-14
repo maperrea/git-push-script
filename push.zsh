@@ -2,11 +2,11 @@
 git add -A
 git diff --cached --exit-code >/dev/null
 if [[ $? -eq 0 ]]; then
-	echo "No changes to be commited. Do you still wish to continue? [y/n]: "
+	echo -n "No changes to be commited. Do you still wish to continue? [y/n]: "
 	read yn
 	case $yn in
 		Y | y)
-			continue;;
+			0;;
 		N | n)
 			exit;;
 		* )
