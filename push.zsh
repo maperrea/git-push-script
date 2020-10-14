@@ -34,7 +34,9 @@ while true; do
 			git push $1 $2
 			if [[ $? -ne 0 ]]; then
 				while true; do
-					echo -n "Please enter a correct repository and branch\nYou can set it as default with --set-upstream\nAvailaible branches (remotes you never pushed to will not show here):\n"
+					echo "Please enter a correct repository and branch"
+					echo "You can set it as default with --set-upstream"
+					echo "Availaible branches (remotes you never pushed to will not show here):"
 					git branch -a
 					read repo
 					git push ${=repo}
