@@ -30,7 +30,8 @@ while true; do
 			git push $1 $2
 			if [[ $? -ne 0 ]]; then
 				while true; do
-					echo -n "Please enter a correct repository and branch\nYou can set it as default with --set-upstream\n"
+					echo -n "Please enter a correct repository and branch\nYou can set it as default with --set-upstream\nAvailaible branches:\n"
+					git branch -a
 					read repo
 					git push ${=repo}
 					if [[ $? -eq 0 ]]; then
