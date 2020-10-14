@@ -22,7 +22,7 @@ while true; do
 			git push $1 $2
 			if [[ $? -ne 0 ]]; then
 				while true; do
-					echo -n "Please enter a correct repository and branch: "
+					echo "Please enter a correct repository and branch. You add it as default branch with --set=upstream."
 					read repo
 					git push ${=repo}
 					exit
