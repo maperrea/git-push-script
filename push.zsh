@@ -6,7 +6,7 @@ if [[ $? -eq 0 ]]; then
 	read yn
 	case $yn in
 		Y | y)
-			0;;
+			nochange= 1;;
 		N | n)
 			exit;;
 		* )
@@ -20,7 +20,9 @@ if [[ $1 == "-fast" ]]; then
 	exit
 fi
 while true; do
-	echo -n "Do you wish to push? [y/n]: "
+	if [[ $nochange -ne 1 ]]; then
+		echo -n "Do you wish to push? [y/n]: "
+	fi
 	read yn
 	case $yn in
 		Y | y )
