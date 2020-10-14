@@ -6,11 +6,12 @@ if [[ $? -eq 0 ]]; then
 	read yn
 	case $yn in
 		Y | y)
-			break;;
+			continue;;
 		N | n)
 			exit;;
+		* )
+			exit;;
 	esac
-	exit
 fi
 git status -s
 if [[ $1 == "-fast" ]]; then
@@ -29,10 +30,12 @@ while true; do
 			git push $1 $2
 			if [[ $? -ne 0 ]]; then
 				while true; do
-					echo -n "Please enter a correct repository and branch: "
+					echo -n "Please enter a correct repository and branch\nYou can set it as default with --set-upstream\n"
 					read repo
 					git push ${=repo}
-					exit
+					if [[ $? -ne 0 ]]; then
+						exit
+					fi
 				done
 			fi
 			exit;;
