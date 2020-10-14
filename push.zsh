@@ -41,7 +41,11 @@ while true; do
 					echo "You can set it as default with --set-upstream"
 					echo "Available branches (remotes you never pushed to will not show here):"
 					git branch -a
+					echo "type exit to abort"
 					read repo
+					if [[ $repo == "exit" ]]; then
+						exit
+					fi
 					git push ${=repo}
 					if [[ $? -eq 0 ]]; then
 						exit
