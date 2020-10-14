@@ -6,7 +6,7 @@ if [[ $? -eq 0 ]]; then
 	read yn
 	case $yn in
 		Y | y)
-			nochange= 1;;
+			nochange=1;;
 		N | n)
 			exit;;
 		* )
