@@ -22,8 +22,10 @@ fi
 while true; do
 	if [[ $nochange -ne 1 ]]; then
 		echo -n "Do you wish to push? [y/n]: "
+		read yn
+	else
+		yn="y"
 	fi
-	read yn
 	case $yn in
 		Y | y )
 			echo -n "Please enter a commit message: "
