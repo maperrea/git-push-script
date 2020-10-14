@@ -39,7 +39,7 @@ while true; do
 				while true; do
 					echo "Please enter a correct repository and branch"
 					echo "You can set it as default with --set-upstream"
-					echo "Availaible branches (remotes you never pushed to will not show here):"
+					echo "Available branches (remotes you never pushed to will not show here):"
 					git branch -a
 					read repo
 					git push ${=repo}
