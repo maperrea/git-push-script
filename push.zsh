@@ -2,7 +2,14 @@
 git add -A
 git diff --cached --exit-code >/dev/null
 if [[ $? -eq 0 ]]; then
-	echo "No changes to be commited"
+	echo "No changes to be commited. Do you still wish to continue? [y/n]: "
+	read yn
+	case $yn in
+		Y | y)
+			break;;
+		N | n)
+			exit;;
+	esac
 	exit
 fi
 git status -s
@@ -22,7 +29,7 @@ while true; do
 			git push $1 $2
 			if [[ $? -ne 0 ]]; then
 				while true; do
-					echo "Please enter a correct repository and branch. You add it as default branch with --set=upstream."
+					echo -n "Please enter a correct repository and branch: "
 					read repo
 					git push ${=repo}
 					exit
