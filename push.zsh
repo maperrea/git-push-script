@@ -33,7 +33,7 @@ while true; do
 					echo -n "Please enter a correct repository and branch\nYou can set it as default with --set-upstream\n"
 					read repo
 					git push ${=repo}
-					if [[ $? -ne 0 ]]; then
+					if [[ $? -eq 0 ]]; then
 						exit
 					fi
 				done
