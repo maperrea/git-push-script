@@ -31,8 +31,11 @@ while true; do
 	fi
 	case $yn in
 		Y | y )
-			echo -n "Please enter a commit message: "
-			read message
+			message=""
+			while [[ ! -n $message ]]; do
+				echo -n "Please enter a commit message: "
+				read message
+			done
 			git commit -m "$message"
 			git push $1 $2
 			if [[ $? -ne 0 ]]; then
