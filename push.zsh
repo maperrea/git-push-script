@@ -5,16 +5,17 @@ if [[ $? -ne 0 ]]; then
 fi
 git diff --cached --exit-code >/dev/null
 if [[ $? -eq 0 ]]; then
-	echo -n "No changes to be commited. Do you still wish to continue? [y/n]: "
-	read yn
-	case $yn in
-		Y | y)
-			nochange=1;;
-		N | n)
-			exit;;
-		* )
-			exit;;
-	esac
+	while true; do
+		echo -n "No changes to be commited. Do you still wish to continue? [y/n]: "
+		read yn
+		case $yn in
+			Y | y)
+				nochange=1
+				break;;
+			N | n)
+				exit;;
+		esac
+	done
 fi
 git status -s
 if [[ $1 == "-fast" ]]; then
