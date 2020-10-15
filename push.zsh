@@ -1,8 +1,12 @@
 #!/bin/zsh
 git diff --cached --exit-code >/dev/null
-if [[ $? -eq 129 ]]; then
+cached=$?
+if [[ $cached -eq 129 ]]; then
 	exit
-elif [[ $? -eq 0 ]]; then
+fi
+git diff --exit-code >/dev/null
+ncached=$?
+if [[ $cached -eq 0 && $ncached -eq 0 ]]; then
 	while true; do
 		echo -n "No changes to be commited. Do you still wish to continue? [y/n]: "
 		read yn
