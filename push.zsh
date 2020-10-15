@@ -1,10 +1,8 @@
 #!/bin/zsh
-git add -A
-if [[ $? -ne 0 ]]; then
-	exit
-fi
 git diff --cached --exit-code >/dev/null
-if [[ $? -eq 0 ]]; then
+if [[ $? -eq 129 ]]; then
+	exit
+elif [[ $? -eq 0 ]]; then
 	while true; do
 		echo -n "No changes to be commited. Do you still wish to continue? [y/n]: "
 		read yn
@@ -19,19 +17,21 @@ if [[ $? -eq 0 ]]; then
 fi
 git status -s
 if [[ $1 == "-fast" ]]; then
+	git add -A
 	git commit -m "Default fast commit message"
 	git push $2 $3
 	exit
 fi
 while true; do
 	if [[ $nochange -ne 1 ]]; then
-		echo -n "Do you wish to push? [y/n]: "
+		echo -n "Do you wish to add all and push? [y/n]: "
 		read yn
 	else
 		yn="y"
 	fi
 	case $yn in
 		Y | y )
+			git add -A
 			message=""
 			while [[ ! -n $message ]]; do
 				echo -n "Please enter a commit message: "
