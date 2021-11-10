@@ -1,4 +1,5 @@
 #!/bin/zsh
+git add -N -A
 git diff --cached --exit-code >/dev/null
 cached=$?
 if [[ $cached -eq 129 ]]; then
